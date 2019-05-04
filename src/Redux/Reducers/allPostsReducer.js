@@ -1,31 +1,33 @@
 const initialState = {
-  posts: JSON.parse(localStorage.getItem("posts")) || [],
+  posts: [],
   loading: false,
-  error: null
+  error: null,
 };
 
-export const allPostsReducer = (state = initialState, { type, payload }) => {
+const allPostsReducer = (state = initialState, { type, payload }) => {
   switch (type) {
-    case "POSTS_REQUEST":
+    case 'POSTS_REQUEST':
       return {
         ...state,
         loading: true,
-        error: false
+        error: false,
       };
-    case "POSTS_RESPONSE":
+    case 'POSTS_RESPONSE':
       return {
         ...state,
         posts: payload,
         loading: false,
-        error: false
+        error: false,
       };
-    case "POSTS_ERROR":
+    case 'POSTS_ERROR':
       return {
         ...state,
         loading: false,
-        error: true
+        error: true,
       };
     default:
       return state;
   }
 };
+
+export default allPostsReducer;

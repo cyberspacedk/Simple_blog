@@ -22,9 +22,19 @@ button{
   outline:none;
   border:none;
   font-family:inherit;
-
+  background: transparent; 
+}
+button:hover{
+  cursor: pointer;
+}
+input, textarea{
+  border: none;
+  outline:none;
 }
 
+*::focus{
+  outline:none;
+}
 `;
 
 export default GlobalStyle;

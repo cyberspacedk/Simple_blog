@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import { connect } from "react-redux";
-import { Link } from "react-router-dom";
-import { formSubmit } from "../../Helpers/Helpers";
-import styled from "styled-components";
+import React, { useState } from 'react';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { formSubmit } from '../../Helpers/Helpers';
+import styled from 'styled-components';
 
 const Single = styled.div`
   max-width: 800px;
@@ -35,7 +35,6 @@ const Single = styled.div`
   button:hover {
     background-color: #fff;
     color: #000;
-    cursor: pointer;
     transition: all 0.3s;
   }
 `;
@@ -44,7 +43,7 @@ const SinglePost = ({ allPosts, match }) => {
   const postId = Number(match.params.id);
   const post = allPosts.find(post => post.id === postId);
 
-  const [comment, setComment] = useState("");
+  const [comment, setComment] = useState('');
 
   return (
     <Single>
@@ -62,6 +61,7 @@ const SinglePost = ({ allPosts, match }) => {
         <textarea
           placeholder="Write what are you thinking about this article"
           value={comment}
+          required
           onChange={e => setComment(e.target.value)}
         />
         <button>Leave a comment</button>
@@ -71,10 +71,11 @@ const SinglePost = ({ allPosts, match }) => {
 };
 
 const mstp = store => ({
-  allPosts: store.blogData.posts
+  allPosts: store.blogData.posts,
+  allComments: store.comments,
 });
 
 export default connect(
   mstp,
-  null
+  null,
 )(SinglePost);

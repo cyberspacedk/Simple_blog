@@ -1,7 +1,7 @@
-import React from "react";
-import { connect } from "react-redux";
-import { Link } from "react-router-dom";
-import styled from "styled-components";
+import React from 'react';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 
 const PostsList = styled.ul`
   max-width: 800px;
@@ -45,8 +45,9 @@ const PostsList = styled.ul`
   }
 `;
 
-const Posts = props => {
-  const { loading, posts, error } = props.allposts;
+const Posts = ({ allposts }) => {
+  console.log(allposts.posts);
+  const posts = allposts.posts.sort((a, b) => b.id - a.id);
 
   return (
     <PostsList>
@@ -62,10 +63,10 @@ const Posts = props => {
 };
 
 const mstp = store => ({
-  allposts: store.blogData
+  allposts: store.blogData,
 });
 
 export default connect(
   mstp,
-  null
+  null,
 )(Posts);
