@@ -10,6 +10,21 @@ body {
   padding: 0;
   font-family: 'Space Mono', monospace;
   background-color: #f3f3f3;
-}`;
+}
+
+a {
+    text-decoration: none;  
+  }
+ul{
+  list-style:none;
+}
+button{
+  outline:none;
+  border:none;
+  font-family:inherit;
+
+}
+
+`;
 
 export default GlobalStyle;

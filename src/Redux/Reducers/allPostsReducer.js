@@ -9,19 +9,21 @@ export const allPostsReducer = (state = initialState, { type, payload }) => {
     case "POSTS_REQUEST":
       return {
         ...state,
-        loading: true
+        loading: true,
+        error: false
       };
     case "POSTS_RESPONSE":
       return {
         ...state,
         posts: payload,
-        loading: false
+        loading: false,
+        error: false
       };
     case "POSTS_ERROR":
       return {
         ...state,
         loading: false,
-        error: payload
+        error: true
       };
     default:
       return state;

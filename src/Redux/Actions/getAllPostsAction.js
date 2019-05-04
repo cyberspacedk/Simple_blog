@@ -4,9 +4,8 @@ const fetchPostsRequest = () => ({
   type: "POSTS_REQUEST"
 });
 
-const fetchPostsError = error => ({
-  type: "POSTS_ERROR",
-  payload: error
+const fetchPostsError = () => ({
+  type: "POSTS_ERROR"
 });
 
 const fetchDataSucces = data => ({
@@ -22,5 +21,5 @@ export const getAllPosts = url => dispatch => {
       dispatch(fetchDataSucces(data));
       localStorage.setItem("posts", JSON.stringify(data));
     })
-    .catch(error => dispatch(fetchPostsError(error)));
+    .catch(error => dispatch(fetchPostsError()));
 };

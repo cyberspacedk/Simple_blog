@@ -1,11 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import Spinner from "../Spinner/Spinner";
 import styled from "styled-components";
 
 const PostsList = styled.ul`
-  list-style: none;
   max-width: 800px;
   min-width: 320px;
   margin: auto;
@@ -34,7 +32,6 @@ const PostsList = styled.ul`
     text-decoration: none;
     display: inline-block;
     background-color: #6f3232;
-    cursor: pointer;
     padding: 5px;
     color: #fff;
     font-size: 12px;
@@ -51,23 +48,21 @@ const PostsList = styled.ul`
 const Posts = props => {
   const { loading, posts, error } = props.allposts;
 
-  return !loading ? (
+  return (
     <PostsList>
       {posts.map(post => (
         <li key={post.id}>
           <h2> {post.title} </h2>
           <p>{post.body}</p>
-          <Link to={`/posts/:${post.id}`}>read more ... </Link>
+          <Link to={`/posts/${post.id}`}>read more ... </Link>
         </li>
       ))}
     </PostsList>
-  ) : (
-    <Spinner />
   );
 };
 
 const mstp = store => ({
-  allposts: store.posts
+  allposts: store.blogData
 });
 
 export default connect(

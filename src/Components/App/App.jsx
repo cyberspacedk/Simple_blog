@@ -4,6 +4,8 @@ import GlobalStyle from "../../Globalstyles";
 // components
 import Header from "../Header/Header";
 import Content from "../Content/Content";
+import Spinner from "../Spinner/Spinner";
+import Error from "../Error/Error";
 // actions
 import { getAllPosts } from "../../Redux/Actions/getAllPostsAction";
 
@@ -14,21 +16,27 @@ class App extends Component {
   }
 
   render() {
+    const { isLoading, isError } = this.props;
     return (
       <>
         <Header />
-        <Content />
+        {isError ? <Error /> : !isLoading ? <Content /> : <Spinner />}
         <GlobalStyle />
       </>
     );
   }
 }
 
+const mstp = ({ blogData }) => ({
+  isError: blogData.error,
+  isLoading: blogData.loading
+});
+
 const mdtp = dispatch => ({
   getPosts: url => dispatch(getAllPosts(url))
 });
 
 export default connect(
-  null,
+  mstp,
   mdtp
 )(App);
