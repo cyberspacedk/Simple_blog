@@ -46,7 +46,6 @@ const PostsList = styled.ul`
 `;
 
 const Posts = ({ allposts }) => {
-  console.log(allposts.posts);
   const posts = allposts.posts.sort((a, b) => b.id - a.id);
 
   return (

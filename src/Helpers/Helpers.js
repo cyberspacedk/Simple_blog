@@ -24,7 +24,6 @@ export const postCreate = (title, body) => {
         title,
         body,
       })
-      .then(response => console.log(response))
       .catch(error => console.log(error));
   }
 };
